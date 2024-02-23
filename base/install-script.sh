@@ -54,16 +54,16 @@ mount "${BLOCK_DEVICE}1" /mnt/boot
 lsblk
 
 # install necessary packages
-pacstrap -K /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware vim git networkmanager grub os-prober efibootmgr
+pacstrap -K /mnt base base-devel linux-zen linux-headers linux-lts linux-lts-headers linux-firmware vim git networkmanager grub os-prober efibootmgr zsh intel-ucode amd-ucode sudo vim
 
 # Generate an fstab config
 genfstab -U /mnt >>/mnt/etc/fstab
 
-# copy chroot-script.sh to /mnt
-cp chroot-script.sh /mnt
+# copy others cripts to /mnt
+cp -r other/ /mnt/other
 
 # chroot into the new system and run the chroot-script.sh script
-arch-chroot /mnt ./chroot-script.sh
+arch-chroot /mnt ./other/chroot-script.sh
 
 # unmount partitions
 umount /mnt/boot /mnt

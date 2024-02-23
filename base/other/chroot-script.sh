@@ -30,3 +30,16 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # enable NetworkManager systemd service
 systemctl enable NetworkManager
+
+# add personal user
+useradd -m -G wheel -s /usr/bin/zsh ray
+
+#set password for user
+passwd ray
+
+#edit sudoers file
+EDITOR=vim visudo
+
+# yay install packages
+yay -Syu grimblast-git swww ags cava hyprland swappy firefox swaylock neovim neofetch brightnessctl gvfs pipewire-pulse networkmanager sddm
+
